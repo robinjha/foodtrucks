@@ -1,17 +1,20 @@
-package com.foodtrucks.rest.resource;
+package com.foodtrucks.rest.resource.impl;
 
 import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.slf4j.Logger;
@@ -20,11 +23,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.foodtrucks.rest.domain.FoodTruck;
+import com.foodtrucks.rest.resource.FoodTruckResource;
 import com.foodtrucks.rest.service.FoodTruckService;
 
 
-@Component
-@Path("/foodtrucks")
+//@Component
+@Path("/foodtruckmethods")
 //@Scope("request")
 public class FoodTruckResourceImpl implements FoodTruckResource{
 	
@@ -34,8 +38,25 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 	
 	@Context
 	private UriInfo uriInfo;
-
+	
 	@GET
+	@Path("/hello")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	  public String sayXMLHello() {
+	    return "<?xml version=\"1.0\"?>" + "<hello> Hello Jersey" + "</hello>";
+	  }
+	
+	@GET
+	@Path("/{parameter}")
+	public Response responseMsg( @PathParam("parameter") String parameter,
+			@DefaultValue("Nothing to say") @QueryParam("value") String value) {
+
+		String output = "Hello from: " + parameter + " : " + value;
+
+		return Response.status(200).entity(output).build();
+	}
+	
+	@GET 
     //@Produces({ "application/json"})
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<FoodTruck> findAllFoodTrucks() {
