@@ -68,13 +68,13 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-core</artifactId>
 			<version>${jersey.version}</version>
-			<scope>${jersey.scope}</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
 			<version>${jersey.version}</version>
-			<scope>${jersey.scope}</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
@@ -94,6 +94,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		
   </dependencies>
   
   <build>

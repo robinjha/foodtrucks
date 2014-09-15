@@ -51,11 +51,13 @@ public class FoodTruckApp {
 
         logger.info("Finished MongoDemo application");
 	}*/
-		List<FoodTruck> results = personService.findByName("Truck");
+		int count = 0;
+		List<FoodTruck> results = personService.findAllFoodTrucks();//personService.findByName("Truck");
 		for(FoodTruck person:results){
 			logger.info("Person : " +person);
+			count++;
 		}
-		
+		logger.info("Count" + count);
         logger.info("Finished MongoDemo application");
     }
 

@@ -32,6 +32,6 @@
   <!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
   <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
   
-  
+  <bean id="foodTruckService" class="com.foodtrucks.rest.resource.impl.FoodTruckResourceImpl" />
 
 </beans>

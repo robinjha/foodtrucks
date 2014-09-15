@@ -57,7 +57,7 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 	}
 	
 	@GET 
-    //@Produces({ "application/json"})
+    @Path("search/all")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<FoodTruck> findAllFoodTrucks() {
     	List<FoodTruck> results = foodTruckService.findAllFoodTrucks();

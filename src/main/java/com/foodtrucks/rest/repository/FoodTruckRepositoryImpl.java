@@ -24,7 +24,7 @@ public class FoodTruckRepositoryImpl implements FoodTrucksRepository{
 
 	 
 	 public List<FoodTruck> findAllFoodTrucks() {
-		 logger.info("Entered into findAllPersons");
+		 logger.info("Entered into findAllFoodrucks");
 		 return mongoTemplate.findAll(FoodTruck.class);
 	 }
 

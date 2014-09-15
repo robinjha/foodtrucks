@@ -1,0 +1,26 @@
+<div class="form-left-col">
+
+    <label>Name:</label>
+    <input type="text" id="name" name="name" value="<%= name %>" required/>
+
+    <label>FoodItems:</label>
+    <input type="text" id="fooditems" name="fooditems" value="<%= fooditems %>"/>
+
+    <label>Address:</label>
+    <input type="text" id="country" name="country" value="<%= country %>"/>
+
+    <label>Location:</label>
+    <input type="text" id="region" name="region"  value="<%= region %>"/>
+<!--
+    <label>Year:</label>
+    <input type="text" id="year" name="year"  value="<%= year %>"/>-->
+
+    <button class="save">Save</button>
+    <button class="delete">Delete</button>
+</div>
+
+<div class="form-right-col">
+    <img height="300" src="pics/<%= picture %>"/>
+    <label>Notes:</label>
+    <textarea id="description" name="description"><%= description %></textarea>
+</div>
