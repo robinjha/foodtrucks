@@ -9,6 +9,7 @@ public interface FoodTruckService {
 	public List<FoodTruck> findAllFoodTrucks();
 	public List<FoodTruck> findByName(String query);
 	public FoodTruck findById(long id);
+	public List<FoodTruck> findAllFoodTrucksNearLocationWithFoodOptions(long latitude, long longitude);
 	public void create(FoodTruck FoodTruck);
 	public void update(FoodTruck FoodTruck);
 	public void delete(FoodTruck FoodTruck);

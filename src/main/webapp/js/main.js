@@ -1,12 +1,61 @@
-Backbone.View.prototype.close = function () {
-    console.log('Closing view ' + this);
-    if (this.beforeClose) {
-        this.beforeClose();
-    }
-    this.remove();
-    this.unbind();
-};
+/*// Models
+window.FoodTruck = Backbone.Model.extend({
+	initialize: function(){
+		console.log("Object is created");
+	}
+});
 
+
+window.FoodTruckCollection = Backbone.Collection.extend({
+    model:FoodTruck,
+    url:"../foodtrucks/rest/foodtruckmethods",
+});
+
+
+// Views
+window.FoodTruckListView = Backbone.View.extend({
+
+    tagName:'ul',
+
+    initialize:function () {
+        this.model.bind("reset", this.render, this);
+    },
+
+    render:function (eventName) {
+        _.each(this.model.models, function (foodtruck) {
+            $(this.el).append(new WineListItemView({model:foodtruck}).render().el);
+        }, this);
+        return this;
+    }
+
+});
+
+window.FoodTruckListItemView = Backbone.View.extend({
+
+    tagName:"li",
+
+    template:_.template($('#tpl-foodtruck-list-item').html()),
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    }
+
+});
+
+window.FoodTruckView = Backbone.View.extend({
+
+    template:_.template($('#tpl-foodtruck-details').html()),
+
+    render:function (eventName) {
+        $(this.el).html(this.template(this.model.toJSON()));
+        return this;
+    }
+
+});
+
+
+// Router
 var AppRouter = Backbone.Router.extend({
 
     initialize: function() {
@@ -14,9 +63,7 @@ var AppRouter = Backbone.Router.extend({
     },
 
 	routes: {
-		""			: "list",
-		"foodtruck/new"	: "newFoodTruck",
-		"foodtruck/:id"	: "foodtruckDetails"
+		""			: "list"
 	},
 
 	list: function() {
@@ -25,8 +72,8 @@ var AppRouter = Backbone.Router.extend({
 
 	foodtruckDetails: function(id) {
         this.before(function() {
-			var foodtruck = app.foodtruckList.get(id);
-		    app.showView( '#content', new FoodTruckView({model: foodtruck}) );
+			var wine = app.foodtruckList.get(id);
+		    app.showView( '#content', new FoodTruckView({model: wine}) );
         });
   	},
 
@@ -34,31 +81,29 @@ var AppRouter = Backbone.Router.extend({
         this.before(function() {
     		app.showView( '#content', new FoodTruckView({model: new FoodTruck()}) );
         });
-	},
+	}
+});
 
-    showView: function(selector, view) {
-        if (this.currentView)
-            this.currentView.close();
-        $(selector).html(view.render().el);
-        this.currentView = view;
-        return view;
+var AppRouter = Backbone.Router.extend({
+	 
+    routes:{
+        "":"list",
     },
-
-    before: function(callback) {
-        if (this.foodtruckList) {
-            if (callback) callback();
-        } else {
-            this.foodtruckList = new FoodTruckCollection();
-       		this.foodtruckList.fetch({success: function() {
-               $('#sidebar').html( new FoodTruckListView({model: app.foodtruckList}).render().el );
-               if (callback) callback();
-            }});
-        }
+ 
+    list:function () {
+        this.foodtruckList = new FoodTruckCollection();
+        this.foodtruckListView = new FoodTruckListView({model:this.foodtruckList});
+        this.foodtruckList.fetch({reset: true});
+        $('#sidebar').html(this.foodtruckListView.render().el);
+    },
+ 
+    foodtruckDetails:function (id) {
+        this.foodtruck = this.foodtruckList.get(id);
+        this.foodtruckView = new FoodTruckView({model:this.foodtruck});
+        $('#content').html(this.foodtruckView.render().el);
     }
-
 });
 
-tpl.loadTemplates(['header', 'foodtruck-details', 'foodtruck-list-item'], function() {
-    app = new AppRouter();
-    Backbone.history.start();
-});
+
+var app = new AppRouter();
+Backbone.history.start();*/

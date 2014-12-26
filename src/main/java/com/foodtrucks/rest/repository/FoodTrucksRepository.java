@@ -14,5 +14,6 @@ public interface FoodTrucksRepository {
 	public void delete(FoodTruck foodtruck);
 	public void createPersonCollection();
 	public void dropPersonCollection();
+	public List<FoodTruck> findAllFoodTrucksNearLocationWithFoodOptions(long latitude, long longitude);
 }
 

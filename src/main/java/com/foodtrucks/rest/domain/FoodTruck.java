@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+
 /**
  * A simple POJO representing a FoodTruck
  */
@@ -18,7 +21,7 @@ public class FoodTruck {
 	private int locationid;
 	private String Applicant;
 	private String FacilityType;
-	private int cnn;
+//	private int cnn;
 	private String LocationDescription;
 	private String Address;
 //	private int blocklot;
@@ -32,15 +35,26 @@ public class FoodTruck {
 	private Double Latitude;
 	private Double Longitude;
 	private String Schedule;
-	private String NOISent;
-	private String Approved;
-	private String Received;
-	private int PriorPermit;
-	private String ExpirationDate;
+//	private String NOISent;
+//	private String Approved;
+//	private String Received;
+//	private int PriorPermit;
+//	private String ExpirationDate;
 	private String Location;
 	
 	public FoodTruck() {
 		super();
+	}
+	
+	public FoodTruck(BasicDBObject obj) {
+		BasicDBObject result = (BasicDBObject) obj;
+		this.foodTruckId = result.getString("foodTruckId");
+		BasicDBObject jobObj = (BasicDBObject) result.get("obj");
+		this.Applicant = jobObj.getString("Applicant");
+		BasicDBList locationList = (BasicDBList)jobObj.get("location");
+		this.Longitude = (Double) locationList.get(0);
+		this.Latitude = (Double) locationList.get(1);
+	
 	}
 	
 	public FoodTruck(String foodTruckId, int locationid, String applicant,
@@ -55,7 +69,7 @@ public class FoodTruck {
 		this.locationid = locationid;
 		Applicant = applicant;
 		FacilityType = facilityType;
-		this.cnn = cnn;
+//		this.cnn = cnn;
 		LocationDescription = locationDescription;
 		Address = address;
 //		this.blocklot = blocklot;
@@ -69,11 +83,11 @@ public class FoodTruck {
 		Latitude = latitude;
 		Longitude = longitude;
 		Schedule = schedule;
-		NOISent = nOISent;
-		Approved = approved;
-		Received = received;
-		PriorPermit = priorPermit;
-		ExpirationDate = expirationDate;
+//		NOISent = nOISent;
+//		Approved = approved;
+//		Received = received;
+//		PriorPermit = priorPermit;
+//		ExpirationDate = expirationDate;
 		Location = location;
 	}
 	
@@ -150,12 +164,12 @@ public class FoodTruck {
 	public void setSchedule(String schedule) {
 		Schedule = schedule;
 	}
-	public String getApproved() {
+/*	public String getApproved() {
 		return Approved;
 	}
 	public void setApproved(String approved) {
 		Approved = approved;
-	}
+	}*/
 	public String getLocation() {
 		return Location;
 	}
@@ -167,13 +181,13 @@ public class FoodTruck {
 	public String toString() {
 		return "FoodTruck [foodTruckId=" + foodTruckId + ", locationid="
 				+ locationid + ", Applicant=" + Applicant + ", FacilityType="
-				+ FacilityType + ", cnn=" + cnn + ", LocationDescription="
+				+ FacilityType + ", LocationDescription="
 				+ LocationDescription + ", Address=" + Address +" FoodItems=" + FoodItems
 				+ ", X=" + X + ", Y=" + Y + ", Latitude=" + Latitude
 				+ ", Longitude=" + Longitude + ", Schedule=" + Schedule
-				+ ", NOISent=" + NOISent + ", Approved=" + Approved
-				+ ", Received=" + Received + ", PriorPermit=" + PriorPermit
-				+ ", ExpirationDate=" + ExpirationDate + ", Location="
-				+ Location + "]";
+//				+ ", NOISent=" + NOISent + ", Approved=" + Approved
+//				+ ", Received=" + Received + ", PriorPermit=" + PriorPermit
+//				+ ", ExpirationDate=" + ExpirationDate +
+				+", Location="+ Location + "]";
 	}
 }

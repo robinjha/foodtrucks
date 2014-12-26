@@ -1,5 +1,7 @@
 package com.foodtrucks.rest.resource.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -25,6 +27,11 @@ import org.springframework.stereotype.Component;
 import com.foodtrucks.rest.domain.FoodTruck;
 import com.foodtrucks.rest.resource.FoodTruckResource;
 import com.foodtrucks.rest.service.FoodTruckService;
+import com.mongodb.BasicDBList;
+import com.mongodb.BasicDBObject;
+import com.mongodb.CommandResult;
+import com.mongodb.DB;
+import com.sun.jersey.spi.inject.Inject;
 
 
 //@Component
@@ -35,6 +42,9 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 	static final Logger logger = LoggerFactory.getLogger(FoodTruckResourceImpl.class);
 	
 	@Autowired  private FoodTruckService foodTruckService;
+	
+	@Inject
+	private DB db;
 	
 	@Context
 	private UriInfo uriInfo;
@@ -57,7 +67,7 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 	}
 	
 	@GET 
-    @Path("search/all")
+    //@Path("search/all")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<FoodTruck> findAllFoodTrucks() {
     	List<FoodTruck> results = foodTruckService.findAllFoodTrucks();
@@ -81,6 +91,40 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 		logger.info("Finding foodtrucks by id: " + id);
 		return foodTruckService.findById(id);
 	}
+	
+	
+	@GET
+	@Path("/{foodItems}")
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	public List<FoodTruck> findAllFoodTrucksNearLocationWithFoodOptions(
+			@PathParam("FoodItems") String FoodItems,
+			@QueryParam("longitude") long longitude,
+			@QueryParam("latitude") long latitude) {
+		logger.info("Finding foodtrucks close to a given location - longitude: " + longitude +" latitude : "+ latitude );
+		return foodTruckService.findAllFoodTrucksNearLocationWithFoodOptions(latitude, longitude);
+
+		/*String[] foodOptionsArr = FoodItems.split(",");
+		BasicDBObject cmd = new BasicDBObject();
+		cmd.put("geoNear", "jobs");
+		double lnglat[] = { longitude, latitude };
+		cmd.put("near", lnglat);
+		cmd.put("num", 10);
+		BasicDBObject skillsQuery = new BasicDBObject();
+		skillsQuery.put("skills", new BasicDBObject("$in", Arrays.asList(foodOptionsArr)));
+		cmd.put("query", skillsQuery);
+		cmd.put("distanceMultiplier", 111);
+
+		CommandResult commandResult = db.command(cmd);
+
+		BasicDBList results = (BasicDBList)commandResult.get("results");
+		List<FoodTruck> foodtrucks = new ArrayList<FoodTruck>();
+		for (Object obj : results) {
+			FoodTruck ft = new FoodTruck((BasicDBObject)obj);
+			foodtrucks.add(ft);
+		}
+		return foodtrucks;*/
+		
+	}
 
 
 
@@ -95,6 +139,12 @@ public class FoodTruckResourceImpl implements FoodTruckResource{
 	}
 
 	public FoodTruck delete(FoodTruck FoodTruck) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<FoodTruck> findAllFoodTrucksNearLocationWithFoodOptions(
+			long latitude, long longitude) {
 		// TODO Auto-generated method stub
 		return null;
 	}

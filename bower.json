@@ -1,0 +1,23 @@
+{
+  "name": "foodtrucks",
+  "version": "1.0.0",
+  "homepage": "https://github.com/robinjha/foodtrucks",
+  "authors": [
+    "robinjha <robinjha@gmail.com>"
+  ],
+  "description": "Web service to locate nearest foodtrucks to you",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone-amd": "~1",
+    "jquery": "~2",
+    "lodash": "~1",
+    "curl": "~0.8"
+  }
+}

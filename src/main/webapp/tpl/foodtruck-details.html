@@ -1,26 +1,43 @@
 <div class="form-left-col">
 
-    <label>Name:</label>
-    <input type="text" id="name" name="name" value="<%= name %>" required/>
+ <label>Id:</label>
+    	<input type="text" id="foodTruckId" name="foodTruckId" value="<%= foodTruckId %>" required/>
 
-    <label>FoodItems:</label>
-    <input type="text" id="fooditems" name="fooditems" value="<%= fooditems %>"/>
+	 <label>Location Id:</label>
+    	<input type="text" id="locationid" name="locationid" value="<%= locationid %>" required/>
+    	
+     <label>Name:</label>
+    	<input type="text" id="Applicant" name="Applicant" value="<%= Applicant %>" required/>
+    	
+    <label>Facility Type:</label>
+    	<input type="text" id="FacilityType" name="FacilityType" value="<%= FacilityType %>" required/>
+    	
+    <label>Location Description:</label>
+    	<input type="text" id="LocationDescription" name="LocationDescription" value="<%= LocationDescription %>" required/>
+    	
+   	  <label>FoodItems:</label>
+     	<input type="text" id="FoodItems" name="FoodItems" value="<%= FoodItems %>"/>
+     	
+     <label>X:</label>
+     	<input type="text" id="X" name="X" value="<%= X %>"/>
+     	
+     <label>Y:</label>
+     	<input type="text" id="Y" name="Y" value="<%= Y %>"/>
+     	
+     <label>Latitude:</label>
+     	<input type="text" id="Latitude" name="Latitude" value="<%= Latitude %>"/>
+     	
+     <label>Longitude:</label>
+     	<input type="text" id="Longitude" name="Longitude" value="<%= Longitude %>"/>
+     	
+     <label>Schedule:</label>
+     	<input type="text" id="Schedule" name="Schedule" value="<%= Schedule %>"/>
+     	
+     <label>Location:</label>
+     	<input type="text" id="Location" name="Location" value="<%= Location %>"/>
 
-    <label>Address:</label>
-    <input type="text" id="country" name="country" value="<%= country %>"/>
+      <label>Address:</label>
+       <input type="text" id="Address" name="Address" value="<%= Address %>"/>
 
-    <label>Location:</label>
-    <input type="text" id="region" name="region"  value="<%= region %>"/>
-<!--
-    <label>Year:</label>
-    <input type="text" id="year" name="year"  value="<%= year %>"/>-->
-
-    <button class="save">Save</button>
-    <button class="delete">Delete</button>
 </div>
 
-<div class="form-right-col">
-    <img height="300" src="pics/<%= picture %>"/>
-    <label>Notes:</label>
-    <textarea id="description" name="description"><%= description %></textarea>
-</div>

@@ -36,10 +36,24 @@ public class FoodTruckServiceImpl implements FoodTruckService{
         return results;
     }
     
+    public List<FoodTruck> findAllFoodTrucksNearLocationWithFoodOptions(long latitude, long longitude) {
+    	List<FoodTruck> results = foodTruckRepository.findAllFoodTrucksNearLocationWithFoodOptions(latitude, longitude);
+        return results;
+	} 
+    
     public FoodTruck findById(long id) {
      return foodTruckRepository.findById(id);
     }
-
+    
+    /**
+     * 
+     * @param id
+     * @return
+     */
+   /* public FoodTruck findByDistance(long latitude, long longitude) {
+        return foodTruckRepository.findByDistance(latitude, longitude);
+       }
+*/
 	public void create(FoodTruck FoodTruck) {
 		// TODO Auto-generated method stub
 		
@@ -68,7 +82,7 @@ public class FoodTruckServiceImpl implements FoodTruckService{
 	public void dropFoodTruckCollection() {
 		// TODO Auto-generated method stub
 		
-	} 
+	}
 	
 
 }

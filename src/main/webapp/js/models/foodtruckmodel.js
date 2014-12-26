@@ -1,11 +1,19 @@
 window.FoodTruck = Backbone.Model.extend({
 	urlRoot: "foodtrucks/rest/foodtruckmethods/",
 	defaults: {
-		"id": null,
-	    "name":  "",
-	    "fooditems":  "",
-	    "address":  "",
-	    "location":  "",
+		"foodTruckId": "",
+	    "locationid":  "",
+	    "Applicant":  "",
+	    "FacilityType":  "",
+	    "LocationDescription":  "",
+	    "Address":"",
+	    "FoodItems":"",
+	    "X":"",
+	    "Y":"",
+	    "Latitude":"",
+	    "Longitude":"",
+	    "Schedule":"",
+	    "Location":"",
 	  }
 });
 

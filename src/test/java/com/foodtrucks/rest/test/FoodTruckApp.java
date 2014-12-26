@@ -50,14 +50,19 @@ public class FoodTruckApp {
         logger.info("Avarage age of a person is: {}", personService.getAvarageAgeOfPerson());
 
         logger.info("Finished MongoDemo application");
-	}*/
-		int count = 0;
-		List<FoodTruck> results = personService.findAllFoodTrucks();//personService.findByName("Truck");
-		for(FoodTruck person:results){
-			logger.info("Person : " +person);
-			count++;
+	}
+	*//*	List<FoodTruck> results = personService.findAllFoodTrucks();//personService.findByName("Truck");
+		for(FoodTruck foodtruck:results){
+			logger.info(" ####FoodTruck : " +foodtruck);
 		}
-		logger.info("Count" + count);
+		logger.info("Total food truck count: " + results.size());
+	*/
+		List<FoodTruck> venues = personService.findAllFoodTrucksNearLocationWithFoodOptions(37, -122);
+		logger.info("Closest FoodTrucks to this location are: ");
+		for(FoodTruck f: venues){
+			logger.info("Nearest foodtrucks:" + f);
+		}
+		logger.info("Total nearest food truck to this location count: " + venues.size());
         logger.info("Finished MongoDemo application");
     }
 

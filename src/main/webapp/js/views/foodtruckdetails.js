@@ -1,4 +1,4 @@
-window.WineView = Backbone.View.extend({
+/*window.FoodTruckView = Backbone.View.extend({
 
     tagName: "div", // Not required since 'div' is the default if no el or tagName specified
 
@@ -36,7 +36,7 @@ window.WineView = Backbone.View.extend({
 		});
 		if (this.model.isNew()) {
 			var self = this;
-			app.wineList.create(this.model, {
+			app.foodtruckList.create(this.model, {
 				success: function() {
 					app.navigate('foodtruckmethods/'+self.model.id, false);
 				}
@@ -58,4 +58,4 @@ window.WineView = Backbone.View.extend({
 		return false;
 	}
 
-});
+});*/
